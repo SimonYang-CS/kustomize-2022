@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: kustomize-hello-world
+generatorOptions:
+  disableNameSuffixHash: true
+configMapGenerator:
+- name: configmap
+  literals:
+    - dc=dc-e
+    - cluster=engkube
+secretGenerator:
+- name: regcred 
+  literals:
+  - foo=bar
+configMapGenerator:
+  - name: script 
+    files:
+      - run.sh
